@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'org.neoforge.gradle.userdev' version '7.0.0'
+}
+
+group = 'com.example'
+version = '1.0.0'
+archivesBaseName = 'examplemod'
+
+java {
+    withSourcesJar()
+}
+
+println "Java: ${System.getProperty('java.version')}, NeoForge: ${neoForge.minecraftVersion}, Gradle: ${gradle.gradleVersion}"
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "NeoForge"
+        url = "https://maven.neoforged.net"
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://maven.modrinth.com/releases"
+    }
+}
+
+dependencies {
+minecraft "com.mojang:minecraft:1.21.1"
+    mappings channel: 'official', version: '1.21.1'
+    neoforge "net.neoforged:neoforge:21.1.169"
+}
+
+neoForge {
+    mappings = neoForge.mappings
+    minecraft = neoForge.minecraft
+    extraMavenLibs = true
+}
+
+processResources {
+    inputs.property "version", project.version
+    filteringCharset = 'UTF-8'
+    filesMatching("META-INF/mods.toml") {
+        expand project.properties
+    }
+}
