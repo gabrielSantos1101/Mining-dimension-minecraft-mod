@@ -4,8 +4,8 @@ license = "MIT"
 issueTrackerURL = "https://github.com/NeoForge/NeoForge/issues"
 
 [[mods]]
-modId = "examplemod"
+modId = "miningdimension"
 version = "${version}"
-displayName = "Example Mod"
-description = "Example Minecraft Mod"
-authors = "Example Author"
+displayName = "Mining Dimension"
+description = "A custom dimension for mining all types of ores."
+authors = "Jules a.k.a. Google AI"
